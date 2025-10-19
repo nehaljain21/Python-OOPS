@@ -26,6 +26,14 @@ class BankAccount:
     def get_balance(self):
         return self.__balance
     
+    @get_balance.setter
+    def set_balance(self, new_balance):
+        if new_balance >= 0:
+            self.__balance = new_balance
+            print(f"Balance updated to: {self.__balance}")
+        else:
+            print("Balance cannot be negative.")
+        
     @classmethod
     def get_total_balance(cls):
         return cls.total_balance
@@ -36,9 +44,27 @@ class BankAccount:
         if account_number in existing_account_numbers:
             return True
         return False
-    
 
-acc1=BankAccount("Alice", 1000)
-acc2=BankAccount("Bob", 500)
-print(f"Alice's balance: {acc1.get_balance}")
-print(f"Bob's balance: {acc2.get_balance}")
+class SavingsAccount(BankAccount):
+    def __init__(self, owner_name, balance=0, interest_rate=0.05):
+        super().__init__(owner_name, balance)
+        self.interest_rate = interest_rate
+        print(f"Savings account created for {self.owner_name} with interest rate {self.interest_rate}")
+
+    def deposit(self, amount):
+        print(f"Depositing {amount} into Savings Account...")
+        super().deposit(amount)
+        new_balance = self.get_balance + self.get_balance * self.interest_rate
+        self.set_balance = new_balance
+        print(f"Interest added. New balance with interest: {self.get_balance}")
+    
+    def add_interest(self):
+        print("Adding interest to Savings Account...")
+        new_balance = self.get_balance + self.get_balance * self.interest_rate
+        self.set_balance = new_balance
+        print(f"Interest added. New balance with interest: {self.get_balance}")
+
+acc1=SavingsAccount("Alice", 1000, 0.05)
+acc2=SavingsAccount("Bob", 500, 0.02)
+acc1.deposit(200)
+print(acc1.get_balance)
