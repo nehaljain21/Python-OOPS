@@ -40,9 +40,5 @@ class BankAccount:
 
 acc1=BankAccount("Alice", 1000)
 acc2=BankAccount("Bob", 500)
-print(acc1.get_balance)
-amt=200
-acc1.deposit(amt)
-withdraw_amt=300
-acc1.withdraw(withdraw_amt)
-print(acc1.get_balance)
+print(f"Alice's balance: {acc1.get_balance}")
+print(f"Bob's balance: {acc2.get_balance}")
