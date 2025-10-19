@@ -64,7 +64,7 @@ class SavingsAccount(BankAccount):
         self.set_balance = new_balance
         print(f"Interest added. New balance with interest: {self.get_balance}")
 
-acc1=SavingsAccount("Alice", 1000, 0.05)
+acc1=SavingsAccount("Alice", 1000, 0.01)
 acc2=SavingsAccount("Bob", 500, 0.02)
-acc1.deposit(200)
+acc1.add_interest()
 print(acc1.get_balance)
